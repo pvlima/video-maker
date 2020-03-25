@@ -1,0 +1,19 @@
+{
+  "name": "video-maker",
+  "version": "1.0.0",
+  "description": "project to make videos automatically for YouTube",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pvlima/video-maker.git"
+  },
+  "author": "Paulo Vitor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pvlima/video-maker/issues"
+  },
+  "homepage": "https://github.com/pvlima/video-maker#readme"
+}
