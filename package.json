@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pvlima/video-maker/issues"
   },
-  "homepage": "https://github.com/pvlima/video-maker#readme"
+  "homepage": "https://github.com/pvlima/video-maker#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
