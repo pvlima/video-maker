@@ -108,3 +108,9 @@ credentials/*.json
 
 # State of Content
 content.json
+
+# Content Folder
+content/*.png
+content/*.gif
+content/*.jpg
+content/*.jpeg
