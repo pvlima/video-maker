@@ -26,20 +26,27 @@ async function robot() {
   state.save(content);
 
   async function fetchContentFromWikipedia(content) {
-    console.log(algorithmiaApiKey);
+    console.log("Buscando conteúdo na internet...");
     const algorithmiaAuthenticated = algorithmia(algorithmiaApiKey);
     const wikipediaAlgorithm = algorithmiaAuthenticated.algo('web/WikipediaParser/0.1.2');
-    const wikipediaResponse = await wikipediaAlgorithm.pipe(content.searchTerm);
+    const wikipediaResponse = await wikipediaAlgorithm.pipe({
+      "articleName": content.searchTerm,
+      "lang": "pt"
+    });
     const wikipediaContent = wikipediaResponse.get();
 
     content.sourceContentOriginal = wikipediaContent.content;
+    console.log("Busca realizada com sucesso!");
   }
 
   function sanitizeContent(content) {
+    console.log("Formatando conteúdo...")
     const withoutBlankLinesAndMarkdown = removeBlankLinesAndMarkdown(content.sourceContentOriginal);
     const withoutDatesInParentheses = removeDatesInParentheses(withoutBlankLinesAndMarkdown);
     
     content.sourceContentSanitized = withoutDatesInParentheses;
+
+    console.log("Conteúdo formatado com sucesso!")
 
     function removeBlankLinesAndMarkdown(text) {
       const allLines = text.split("\n");
@@ -59,6 +66,7 @@ async function robot() {
   }
 
   function breakContentIntoSentences(content) {
+    console.log("Resumindo conteúdo em tópicos...")
     content.sentences = [];
 
     const sentences = sentenceBoundaryDetection.sentences(content.sourceContentSanitized);
@@ -76,6 +84,7 @@ async function robot() {
   }
 
   async function fetchKeyWordsOfAllSentences(content) {
+    console.log("Detectando as palavras-chave");
     for(const sentence of content.sentences) {
       sentence.keywords = await fetchWatsonAndReturnKeywords(sentence.text);
     }

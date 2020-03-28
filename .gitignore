@@ -114,3 +114,7 @@ content/*.png
 content/*.gif
 content/*.jpg
 content/*.jpeg
+content/*.js
+
+# System
+.DS_Store
