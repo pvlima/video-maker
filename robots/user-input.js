@@ -7,12 +7,12 @@ function robot() {
     maximumSentences: 7
   };
   content.searchTerm = askAndReturnSearchTerm();
-  content.prefix = askAndReturnPrefix();
+  // content.prefix = askAndReturnPrefix();
 
   state.save(content);
 
   function askAndReturnSearchTerm() {
-    return readline.question('Type a Wikipedia search term: ');
+    return readline.question('Digite o termo a ser buscado: ');
   }
 
   function askAndReturnPrefix() {
